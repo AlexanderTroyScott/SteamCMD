@@ -4,8 +4,9 @@ networks:
     driver: overlay
     external: true
     
-#volumes:
-#  PalServer:
+volumes:
+  steam:
+  steamCMD:
 
 services:
   palworld:
@@ -20,7 +21,9 @@ services:
         - "traefik.udp.services.steamcmd.loadbalancer.server.port=8211" # port of service
     networks:
      - reverse-proxy
-#    volumes:
+    volumes:
+      - "steam:/home/steam/Steam"
+      - "steamCMD:/home/steam/Steamcmd"
 #     - "PalServer:/home/steam/Steam/steamapps/common/PalServer"
     #command: tail -f /dev/null
     #command: ./steamcmd +login anonymous +app_update 2394010 validate +quit
