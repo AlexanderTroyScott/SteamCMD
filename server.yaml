@@ -12,7 +12,7 @@ services:
   palworld:
     image: cm2network/steamcmd:latest
     hostname: palworld
-    user: steam
+#    user: steam
     deploy:
       labels:
         - "traefik.enable=true"
