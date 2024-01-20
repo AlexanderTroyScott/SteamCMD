@@ -1,0 +1,25 @@
+version: "3.9"
+networks:
+  reverse-proxy:
+    driver: overlay
+    external: true
+    
+#volumes:
+  #saves:
+
+services:
+  steamcmd:
+    image: steamcmd/steamcmd:debian-buster
+    hostname: steamcmd
+    deploy:
+      labels:
+        - "traefik.enable=true"
+        - "traefik.udp.routers.steamcmd.entrypoints=steamcmd" #entrypoint->router
+        - "traefik.udp.routers.steamcmd.service=steamcmd" #router -> service
+        - "traefik.udp.services.steamcmd.loadbalancer.server.port=8211" #port of service
+    networks:
+     - reverse-proxy
+   # volumes:
+   #  - type: volume
+   #    source: saves
+   #    target: /home/steamcmd
