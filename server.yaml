@@ -11,7 +11,7 @@ services:
   palworld:
     image: steamcmd/steamcmd:debian-buster
     hostname: palworld
-    user: steamuser
+    user: steam
     deploy:
       labels:
         - "traefik.enable=true"
@@ -24,5 +24,5 @@ services:
     # - type: volume
     #   source: PalServer
     #   target: /root/.steam/SteamApps/common/PalServer
-    command: tail -f /dev/null
+    #command: tail -f /dev/null
     #command: /root/.steam/SteamApps/common/PalServer/PalServer.sh
