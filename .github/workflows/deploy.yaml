@@ -29,4 +29,4 @@ jobs:
           repository: 'alexandertroyscott/steamcmd'
           ref: ${{ github.ref }}
       #- run: chmod -R 777 ./
-      - run: docker stack deploy -c steamcmd.yaml steamcmd
+      - run: docker stack deploy -c server.yaml steamcmd
