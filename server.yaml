@@ -9,7 +9,7 @@ volumes:
 
 services:
   palworld:
-    image: steamcmd/steamcmd:debian-buster
+    image: cm2network/steamcmd:debian-buster
     hostname: palworld
     #user: nobody
     deploy:
