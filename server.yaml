@@ -20,7 +20,9 @@ services:
         - "traefik.udp.services.steamcmd.loadbalancer.server.port=8211" # port of service
     networks:
      - reverse-proxy
-    command: tail -f /dev/null
+    command: /bin/bash -c "/home/steam/steamcmd/steamcmd.sh +login anonymous +app_update 2394010 validate +quit && /home/steam/Steam/steamapps/common/PalServer/PalServer.sh"
+
+    #command: tail -f /dev/null
  #   volumes:
  #     - "steam:/home/steam/Steam"
  #     - "steamCMD:/home/steam/Steamcmd"
