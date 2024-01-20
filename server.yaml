@@ -3,7 +3,6 @@ networks:
   reverse-proxy:
     driver: overlay
     external: true
-    
 #volumes:
 #  steam:
 #  steamCMD:
