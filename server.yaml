@@ -4,14 +4,14 @@ networks:
     driver: overlay
     external: true
     
-volumes:
-  PalServer:
+#volumes:
+#  PalServer:
 
 services:
   palworld:
     image: steamcmd/steamcmd:debian-buster
     hostname: palworld
-    #user: steam
+    user: steam
     deploy:
       labels:
         - "traefik.enable=true"
@@ -20,9 +20,9 @@ services:
         - "traefik.udp.services.palworld.loadbalancer.server.port=8211" # port of service
     networks:
      - reverse-proxy
-    volumes:
-     - type: volume
-       source: PalServer
-       target: /root/.steam/SteamApps/common/PalServer
+    #volumes:
+    # - type: volume
+    #   source: PalServer
+    #   target: /root/.steam/SteamApps/common/PalServer
     command: tail -f /dev/null
     #command: /root/.steam/SteamApps/common/PalServer/PalServer.sh
