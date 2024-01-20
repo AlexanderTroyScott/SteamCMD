@@ -15,8 +15,8 @@ services:
       labels:
         - "traefik.enable=true"
         - "traefik.udp.routers.steamcmd.entrypoints=steamcmd" #entrypoint->router
-        - "traefik.udp.routers.steamcmd.service=steamcmd" #router -> service
-        - "traefik.udp.services.steamcmd.loadbalancer.server.port=8211" #port of service
+        - "traefik.udp.routers.palworld.service=steamcmd" #router -> service
+        - "traefik.udp.services.palworld.loadbalancer.server.port=8211" #port of service
     networks:
      - reverse-proxy
     volumes:
