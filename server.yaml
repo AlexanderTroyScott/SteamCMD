@@ -9,7 +9,7 @@ networks:
 
 services:
   palworld:
-    image: steamcmd/steamcmd:debian-buster
+    image: cm2network/steamcmd:latest
     hostname: palworld
     user: nobody
     deploy:
