@@ -23,5 +23,5 @@ services:
 #    volumes:
 #     - "PalServer:/home/steam/Steam/steamapps/common/PalServer"
     #command: tail -f /dev/null
-    command: ./steamcmd +login anonymous +app_update 2394010 validate +quit
+    #command: ./steamcmd +login anonymous +app_update 2394010 validate +quit
     #command: /home/steam/Steam/steamapps/common/PalServer/PalServer/PalServer.sh
