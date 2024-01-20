@@ -16,9 +16,12 @@ services:
     deploy:
       labels:
         - "traefik.enable=true"
-        - "traefik.udp.routers.steamcmd.entrypoints=steamcmd"           # entrypoint->router
-        - "traefik.udp.routers.steamcmd.service=steamcmd"               # router -> service
-        - "traefik.udp.services.steamcmd.loadbalancer.server.port=8211" # port of service
+        - "traefik.udp.routers.steamcmd_udp.entrypoints=steamcmd_udp"           # entrypoint->router
+        - "traefik.udp.routers.steamcmd_udp.service=steamcmd_udp"               # router -> service
+        - "traefik.udp.services.steamcmd_udp.loadbalancer.server.port=8211"     # port of service
+        - "traefik.http.routers.steamcmd_tcp.entrypoints=steamcmd_tcp"           # entrypoint->router
+        - "traefik.http.routers.steamcmd_tcp.service=steamcmd_tcp"               # router -> service
+        - "traefik.http.services.steamcmd_tcp.loadbalancer.server.port=8211"     # port of service
     networks:
      - reverse-proxy
     volumes:
