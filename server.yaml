@@ -22,5 +22,5 @@ services:
      - reverse-proxy
     volumes:
      - "PalServer:/home/steam/Steam/steamapps/common/PalServer"
-    command: tail -f /dev/null
-    #command: /home/steam/Steam/steamapps/common/PalServer/PalServer.sh
+    #command: tail -f /dev/null
+    command: /home/steam/Steam/steamapps/common/PalServer/PalServer/PalServer.sh
