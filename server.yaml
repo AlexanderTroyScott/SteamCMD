@@ -11,7 +11,7 @@ services:
   palworld:
     image: steamcmd/steamcmd:debian-buster
     hostname: palworld
-    user: nobody
+    #user: nobody
     deploy:
       labels:
         - "traefik.enable=true"
