@@ -19,6 +19,7 @@ services:
         - "traefik.udp.services.steamcmd.loadbalancer.server.port=8211" #port of service
     networks:
      - reverse-proxy
+    command: tail -f /dev/null
    # volumes:
    #  - type: volume
    #    source: saves
