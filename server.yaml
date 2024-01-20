@@ -26,3 +26,4 @@ services:
        target: /root/.steam/SteamApps/common/PalServer
     command: tail -f /dev/null
     #command: /root/.steam/SteamApps/common/PalServer/PalServer.sh
+    
