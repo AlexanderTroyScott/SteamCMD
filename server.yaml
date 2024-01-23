@@ -25,7 +25,7 @@ services:
         - "traefik.tcp.services.steamcmd_tcp.loadbalancer.server.port=8211"     # port of service
       placement:
         constraints:
-          - "node.labels.location == game"
+          - node.labels.location == game
     networks:
      - reverse-proxy
     volumes:
