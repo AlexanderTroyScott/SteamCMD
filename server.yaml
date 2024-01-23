@@ -5,8 +5,6 @@ networks:
     external: true
 volumes:
   PalServer:
-#  steam:
-#  steamCMD:
 
 services:
   palworld:
@@ -25,7 +23,6 @@ services:
         - "traefik.tcp.services.steamcmd_tcp.loadbalancer.server.port=8211"     # port of service
       placement:
         constraints:
-          - node.labels.location == game
           - node.role == worker
     networks:
      - reverse-proxy
