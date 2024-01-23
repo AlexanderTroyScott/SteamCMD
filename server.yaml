@@ -23,12 +23,13 @@ services:
         - "traefik.tcp.routers.steamcmd_tcp.entrypoints=steamcmd_tcp"           # entrypoint->router
         - "traefik.tcp.routers.steamcmd_tcp.service=steamcmd_tcp"               # router -> service
         - "traefik.tcp.services.steamcmd_tcp.loadbalancer.server.port=8211"     # port of service
+      placement:
+        constraints:
+          - "node.labels.location == game"
     networks:
      - reverse-proxy
     volumes:
-     - "PalServer:/home/steam/Steam"
-    constraints:
-     - "node.labels.location == game"
+     - "PalServer:/home/steam/Steam"      
     command: /bin/bash -c "/home/steam/steamcmd/steamcmd.sh +login anonymous +app_update 2394010 validate +quit && /home/steam/Steam/steamapps/common/PalServer/PalServer.sh"
 
     #command: tail -f /dev/null
