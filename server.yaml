@@ -24,7 +24,6 @@ services:
       placement:
         constraints:
           - node.labels.location == game
-          #- node.role == worker
     networks:
      - reverse-proxy
     volumes:
