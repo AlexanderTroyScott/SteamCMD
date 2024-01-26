@@ -1,0 +1,31 @@
+version: "3.9"
+networks:
+  reverse-proxy:
+    driver: overlay
+    external: true
+volumes:
+  PalServer:
+
+services:
+  palworld:
+    image: cm2network/steamcmd:latest
+    hostname: palworld
+    user: "1000"
+    deploy:
+      labels:
+        - "traefik.enable=true"
+        - "traefik.udp.routers.steamcmd_udp.entrypoints=steamcmd_udp"           # entrypoint->router
+        - "traefik.udp.routers.steamcmd_udp.service=steamcmd_udp"               # router -> service
+        - "traefik.udp.services.steamcmd_udp.loadbalancer.server.port=8211"     # port of service
+        - "traefik.tcp.routers.steamcmd_tcp.rule=HostSNI(`*`)"
+        - "traefik.tcp.routers.steamcmd_tcp.entrypoints=steamcmd_tcp"           # entrypoint->router
+        - "traefik.tcp.routers.steamcmd_tcp.service=steamcmd_tcp"               # router -> service
+        - "traefik.tcp.services.steamcmd_tcp.loadbalancer.server.port=8211"     # port of service
+      placement:
+        constraints:
+          - node.labels.location == game
+    networks:
+     - reverse-proxy
+    volumes:
+     - "PalServer:/home/steam/Steam"      
+    command: /bin/bash -c "/home/steam/steamcmd/steamcmd.sh +login anonymous +app_update 2394010 validate +quit && /home/steam/Steam/steamapps/common/PalServer/PalServer.sh"
